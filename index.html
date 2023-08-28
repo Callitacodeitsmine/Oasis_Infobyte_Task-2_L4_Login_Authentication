@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Authentication System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="loginForm">
+    <h2>Login</h2>
+    <label for="username">Username:</label>
+    <input type="text" id="username" ><br>
+    <label for="password">Password:</label>
+    <input type="password" id="password" ><br>
+    <button onclick="login()">Login</button>
+</div>
+
+<div id="securePage" style="display: none;">
+    <h2>Welcome to the Secure Page!</h2>
+    <p>This is a protected area.</p>
+    <button onclick="logout()">Logout</button>
+</div>
+
+<script>
+    const userDatabase = {
+        "user1": "password1",
+        "user2": "password2"
+    };
+
+    function login() {
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+
+        if (userDatabase.hasOwnProperty(username) && userDatabase[username] === password) {
+            document.getElementById("loginForm").style.display = "none";
+            document.getElementById("securePage").style.display = "block";
+        } else {
+            alert("Login failed. Please check your credentials.");
+        }
+    }
+
+    function logout() {
+        document.getElementById("securePage").style.display = "none";
+        document.getElementById("loginForm").style.display = "block";
+    }
+</script>
+
+</body>
+</html>
